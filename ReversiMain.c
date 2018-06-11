@@ -2,12 +2,12 @@
 #include <conio.h>
 #include "meuconio.h"
 
-#define L 8 //Número de linhas do tabuleiro de jogo
-#define C 8 //Número de colunas do tabuleiro de jogo
+#define L 8 //NÃºmero de linhas do tabuleiro de jogo
+#define C 8 //NÃºmero de colunas do tabuleiro de jogo
 
 //========================================//
 
-//Posições iniciais das duas peças brancas
+//PosiÃ§Ãµes iniciais das duas peÃ§as brancas
 
 int INICIO_BRANCO_1_LINHA = 3;
 int INICIO_BRANCO_1_COLUNA = 3;
@@ -17,7 +17,7 @@ int INICIO_BRANCO_2_COLUNA = 4;
 
 //======================================//
 
-//Posições iniciais das duas peças pretas
+//PosiÃ§Ãµes iniciais das duas peÃ§as pretas
 
 int INICIO_PRETO_1_LINHA = 3;
 int INICIO_PRETO_1_COLUNA = 4;
@@ -27,23 +27,23 @@ int INICIO_PRETO_2_COLUNA = 3;
 
 //========================================//
 
-int turno = 1;//Variável que indicará de qual jogador é o turno atual
-int board[L][C] = {0}; /*Matriz que representará o tabuleiro de jogo
-0 -> Posição vazia
-1 -> Posição ocupada por uma peça preta
-2 - > Posição ocupada por uma peça branca */
+int turno = 1;//VariÃ¡vel que indicarÃ¡ de qual jogador Ã© o turno atual
+int board[L][C] = {0}; /*Matriz que representarÃ¡ o tabuleiro de jogo
+0 -> PosiÃ§Ã£o vazia
+1 -> PosiÃ§Ã£o ocupada por uma peÃ§a preta
+2 - > PosiÃ§Ã£o ocupada por uma peÃ§a branca */
 
-//Função que retornará 0 se o jogo terminou, 1 se as pretas ganharam, 2 se as brancas ganharam e 3 se houve um empate.
+//FunÃ§Ã£o que retornarÃ¡ 0 se o jogo terminou, 1 se as pretas ganharam, 2 se as brancas ganharam e 3 se houve um empate.
 int checaResultado();
-//Função que retornará 1 se a posicao escolhida pelo usuário e valida e 0 se é inválida
+//FunÃ§Ã£o que retornarÃ¡ 1 se a posicao escolhida pelo usuÃ¡rio e valida e 0 se Ã© invÃ¡lida
 int checaPosicaoValida(int linha, int coluna, int pecaAtual);
-//Função que coloca os botões inicais no tabuleiro
+//FunÃ§Ã£o que coloca os botÃµes inicais no tabuleiro
 void inicializaMatriz();
-//Função que imprime a matriz, colorindo as posições de acordo com os valores
+//FunÃ§Ã£o que imprime a matriz, colorindo as posiÃ§Ãµes de acordo com os valores
 void imprimeMatriz();
-//Loop do jogo (lerá as entradas dos usuários até o final do jogo)
+//Loop do jogo (lerÃ¡ as entradas dos usuÃ¡rios atÃ© o final do jogo)
 void gameLoop();
-//Função que troca as peças do tabuleiro quando é escolhida uma posição válida
+//FunÃ§Ã£o que troca as peÃ§as do tabuleiro quando Ã© escolhida uma posiÃ§Ã£o vÃ¡lida
 void trocaPecas(int linha, int coluna, int pecaAtual);
 
 int main()
@@ -149,7 +149,7 @@ int checaPosicaoValida(int linha, int coluna, int pecaAtual)
 		
 		if(coluna < C - 1)
 		{
-			//Subindo diagonal secundária
+			//Subindo diagonal secundÃ¡ria
 			i = linha;
 			j = coluna;
 			
@@ -180,7 +180,7 @@ int checaPosicaoValida(int linha, int coluna, int pecaAtual)
 	{
 		if(coluna > 0)
 		{
-			//Descendo diagonal secundária
+			//Descendo diagonal secundÃ¡ria
 			i = linha;
 			j = coluna;
 			
@@ -282,6 +282,8 @@ void inicializaMatriz()
 void imprimeMatriz()
 {
 	int i, j;
+	
+	clrscr();
 	
 	printf("  ");
 	textcolor(4);
@@ -414,13 +416,13 @@ void trocaPecas(int linha, int coluna, int pecaAtual)
 						j--;
 					}
 					
-					board[i - 1][j - 1] = contrario;
+					board[i - 1][j - 1] = pecaAtual;
 				}
 		}
 		
 		if(coluna < C - 1)
 		{
-			//Subindo diagonal secundária
+			//Subindo diagonal secundÃ¡ria
 			i = linha;
 			j = coluna;
 			
@@ -474,7 +476,7 @@ void trocaPecas(int linha, int coluna, int pecaAtual)
 	{
 		if(coluna > 0)
 		{
-			//Descendo diagonal secundária
+			//Descendo diagonal secundÃ¡ria
 			i = linha;
 			j = coluna;
 			
